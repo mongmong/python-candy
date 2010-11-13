@@ -18,9 +18,9 @@ import types
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-from autostats.common.log import get_logger
-from autostats.common import settings
-from autostats.common import error
+from sweety.log import get_logger
+from sweety import settings
+from sweety import error
 
 class OptionManager(object):
     def __init__(self):

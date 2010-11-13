@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 '''
-autostats.common.settings
+sweety.settings
 
-Definesthe 
+Defines the setting module.
 
-@author: Yunzhi Zhou (Chris Chou) <yunzhi@yahoo-inc.com>
+@author: Chris Chou <m2chrischou AT gmail.com>
 @description: 
 '''
 

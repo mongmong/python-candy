@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 '''
-autostats.common.log
+sweety.log
 
-@author: Yunzhi Zhou (Chris Chou) <yunzhi@yahoo-inc.com>
+@author: Chris Chou <m2chrischou AT gmail.com>
 @description: 
 
-
 Environment variables:
-AUTOSTATS_VERBOSE - turn on verbose mode.
-AUTOSTATS_LOG_FILENAME - specify the log file.
+SWEETY_VERBOSE - turn on verbose mode.
+SWEETY_LOG_FILENAME - specify the log file.
 '''
 
 from datetime import datetime
@@ -16,7 +15,7 @@ import logging
 import os
 import sys
 
-from autostats.common import logstatus, util
+from sweety import logstatus, util
 
 _start_time = datetime.now()
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 '''
-autostat.common.util
+sweety.util
 
-@author: Yunzhi Zhou (Chris Chou) <yunzhi@yahoo-inc.com>
+@author: Chris Chou <m2chrischou AT gmail.com>
 @description: 
 '''
 

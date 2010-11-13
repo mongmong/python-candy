@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 '''
-autostat.common.error
+sweety.error
 
 Defines the error classes.
 
-@author: Yunzhi Zhou (Chris Chou) <yunzhi@yahoo-inc.com>
+@author: Chris Chou <m2chrischou AT gmail.com>
 @description: 
 '''
 
 import exceptions
 
-class AutoStatsError(exceptions.RuntimeError):
+class SweetyError(exceptions.RuntimeError):
     pass
 
-class AutoStatsOptionRequiredError(AutoStatsError):
+class SweetyOptionRequiredError(SweetyError):
     pass

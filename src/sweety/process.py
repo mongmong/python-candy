@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 '''
-autostats.commom.process
+sweety.process
 
-@author: yunzhi
+@author: Chris Chou <m2chrischou AT gmail.com>
 @description: 
 '''
 
@@ -10,7 +10,7 @@ import logging
 import os
 from subprocess import Popen, PIPE
 
-from autostats.common.log import get_logger
+from sweety.log import get_logger
 
 class Command(object):
         '''

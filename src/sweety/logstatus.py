@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 '''
-autostats.common.logstatus
+sweety.logstatus
 
-@author: Yunzhi Zhou (Chris Chou) <yunzhi@yahoo-inc.com>
+@author: Chris Chou <m2chrischou AT gmail.com>
 @description: 
 '''
 

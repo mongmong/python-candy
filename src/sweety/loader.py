@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 '''
-ssma.common.loader
+sweety.loader
 
 This module contains the functions for loading modules.
 
-@author: Yunzhi Zhou (Chris Chou) <yunzhi@yahoo-inc.com>
+@author: Chris Chou <m2chrischou AT gmail.com>
 @description: 
 '''
 
@@ -13,7 +13,7 @@ import sys
 import traceback
 
 #from smartcube.util.log import get_logger
-from autostats.common.log import get_logger
+from sweety.log import get_logger
 
 def load_file(filename):
     '''
