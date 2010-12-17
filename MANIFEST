@@ -1,0 +1,10 @@
+setup.py
+src/sweety/__init__.py
+src/sweety/error.py
+src/sweety/loader.py
+src/sweety/log.py
+src/sweety/logstatus.py
+src/sweety/process.py
+src/sweety/program.py
+src/sweety/settings.py
+src/sweety/util.py
