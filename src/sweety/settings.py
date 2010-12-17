@@ -16,25 +16,16 @@ Defines the setting module.
 import os
 import sys
 
-def get_conf_dir():
-    confdir = os.path.realpath(
-                            os.path.join(
-                                        os.path.dirname(get_conf_dir.func_code.co_filename),
-                                        '../../../conf'
-                                        )
-                            )
-
-    return confdir
-
-confdir = get_conf_dir()
-
-sys.path.insert(0, os.path.dirname(confdir))
-
-from conf.settings import *
-
-del sys.path[0]
+from sweety import loader
 
 _vars = locals()
+
+if os.environ.has_key('SWEETY_SETTING_MODULE'):
+	_setting = loader.load_file(os.environ['SWEETY_SETTING_MODULE'])
+
+	for _key in dir(_setting):
+		_vars[_key] = getattr(_setting, _key)
+
 for _key in _vars.keys():
     _val = _vars[_key]
     if isinstance(_val, (str, unicode)):
@@ -42,4 +33,4 @@ for _key in _vars.keys():
         _val = os.path.expandvars(_val)
         _vars[_key] = _val
 
-
+del _vars
