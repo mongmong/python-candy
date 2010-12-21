@@ -1,1 +1,4 @@
+include AUTHORS
+include LICENSE
+include README
 recursive-include src/sweety *.py

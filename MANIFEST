@@ -1,3 +1,6 @@
+AUTHORS
+LICENSE
+README
 setup.py
 src/sweety/__init__.py
 src/sweety/error.py
