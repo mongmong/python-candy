@@ -56,14 +56,14 @@ def get_logger(name_or_self):
 		console.setFormatter(_console_formatter)
 		log.addHandler(console)
 
-		if os.environ.has_key('SWEETYS_VERBOSE') and os.environ['SWEETYS_VERBOSE']:
+		if os.environ.has_key('SWEETY_VERBOSE') and os.environ['SWEETY_VERBOSE']:
 			console.setLevel(logging.INFO)
 		else:
 			console.setLevel(logging.WARNING)
 
 
-		if os.environ.has_key('SWEETYS_LOG_FILENAME'):
-			fn = os.environ['SWEETYS_LOG_FILENAME']
+		if os.environ.has_key('SWEETY_LOG_FILENAME'):
+			fn = os.environ['SWEETY_LOG_FILENAME']
 			fdir = os.path.dirname(fn)
 			fdir = os.path.join(fdir, _start_time.strftime('%Y-%m-%d'))
 			if not os.path.exists(fdir):
