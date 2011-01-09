@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 '''
-autostats.common.program
+sweety.program
 
-@author: Yunzhi Zhou (Chris Chou) <yunzhi@yahoo-inc.com>
+@author: Chris Chou <m2chrischou AT gmail.com>
 @description: 
 '''
 
@@ -24,9 +24,9 @@ from sweety import error
 
 class OptionManager(object):
     def __init__(self):
-        self.usage = ''
-        self.header = ''
-        self.footer = 'AUTOSTATS Tools.\nAny question please contact the author <yunzhi@yahoo-inc.com>'
+        self.usage = '<Usage>'
+        self.header = '<Header>'
+        self.footer = '<Footer>'
         self.options = {}
         self._options_list = []
         self.environments = {}
@@ -374,8 +374,8 @@ class Program(OptionManager):
         self.add_option('V', 'version', 'display version information.')
         self.add_option('v', 'verbose', 'turn on verbose mode.')
 
-        self.add_environment('AUTOSTATS_VERBOSE', 'turn on verbose mode.')
-        self.add_environment('AUTOSTATS_LOG_FILENAME', 'specify the log filename.', 'filename')
+        self.add_environment('SWEETY_VERBOSE', 'turn on verbose mode.')
+        self.add_environment('SWEETY_LOG_FILENAME', 'specify the log filename.', 'filename')
 
         self._output = []
 
@@ -459,10 +459,10 @@ class Program(OptionManager):
             retcode = 255
 
         if retcode:
-            if os.environ.has_key('AUTOSTATS_ALERT') and os.environ['AUTOSTATS_ALERT']:
+            if os.environ.has_key('SWEETY_ALERT') and os.environ['SWEETY_ALERT']:
                 self.alert(retcode, retmsg, 'Please refer to the log for detailed information.')
 
-            self.log.error('Exiting alnormally - [%d] %s' % (retcode, retmsg))
+            self.log.error('Exiting with error - [%d] %s' % (retcode, retmsg))
         else:
             retmsg = '%s: %s' % (os.path.basename(sys.argv[0]), retmsg)
             self.log.info('Exiting normally - [%d] %s' % (retcode, retmsg))
@@ -487,30 +487,6 @@ class Program(OptionManager):
         for o in self._output:
             o.flush()
 
-    def create_output(self):
-        ret = None
-
-        if len(self.opt_output) == 0:
-            ret = output.FileOutput(sys.stdout)
-        else:
-            multiOutput = output.MultiOutput()
-            for o in self.opt_output:
-                if o == '-':
-                    multiOutput.add_output(output.FileOutput(sys.stdout))
-                elif o.startswith('mailto:'):
-                    multiOutput.add_output(output.EmailOutput(o[7:]))
-                else:
-                    multiOutput.add_output(output.FileOutput(o))
-            if multiOutput.output_count == 1:
-                ret = multiOutput.get_outputs()[0]
-            else:
-                ret = multiOutput
-
-        self._output.append(ret)
-        return ret
-
-    def close_output(self, output):
-        del output
 
 def _print_module(module, log):
     for k in dir(module):
@@ -536,7 +512,7 @@ def mainwrapper(progclass):
         version() - displays version information.
         main() - the program entry.
     '''
-    log = get_logger('autostats.common.program.mainwrapper')
+    log = get_logger('sweety.program.mainwrapper')
 
     log.info('Program started, command line [%s]' % ' '.join(sys.argv))
 
@@ -566,7 +542,7 @@ def mainwrapper(progclass):
 
     # hack
     if '-v' in sys.argv or '--verbose' in sys.argv:
-        os.environ['AUTOSTATS_VERBOSE'] = '1'
+        os.environ['SWEETY_VERBOSE'] = '1'
 
     prog = progclass()
     prog.starttime = datetime.datetime.now()
@@ -586,7 +562,7 @@ def mainwrapper(progclass):
     if opts.has_key('opt_verbose'):
         verbose = True
     if verbose:
-        os.environ['AUTOSTATS_VERBOSE'] = '1'
+        os.environ['SWEETY_VERBOSE'] = '1'
 
     if opts.has_key('opt_help'):
         prog.help()
@@ -617,7 +593,7 @@ def mainwrapper(progclass):
 
         prog.exit(False)
     else:
-        log.info('Exiting without exceptions.')
+        log.info('Exiting normally.')
 
     prog.exit(ret)
 

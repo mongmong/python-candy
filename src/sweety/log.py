@@ -36,7 +36,7 @@ def get_logger(name_or_self):
 	@return: the logger object.
 	'''
 
-	lockname = 'autostats.log.%s.lock' % _start_time.strftime('%Y-%m-%d')
+	lockname = 'sweety.log.%s.lock' % _start_time.strftime('%Y-%m-%d')
 	lock = util.FileLock(lockname)
 	lock.lock()
 
@@ -56,14 +56,14 @@ def get_logger(name_or_self):
 		console.setFormatter(_console_formatter)
 		log.addHandler(console)
 
-		if os.environ.has_key('AUTOSTATS_VERBOSE') and os.environ['AUTOSTATS_VERBOSE']:
+		if os.environ.has_key('SWEETYS_VERBOSE') and os.environ['SWEETYS_VERBOSE']:
 			console.setLevel(logging.INFO)
 		else:
 			console.setLevel(logging.WARNING)
 
 
-		if os.environ.has_key('AUTOSTATS_LOG_FILENAME'):
-			fn = os.environ['AUTOSTATS_LOG_FILENAME']
+		if os.environ.has_key('SWEETYS_LOG_FILENAME'):
+			fn = os.environ['SWEETYS_LOG_FILENAME']
 			fdir = os.path.dirname(fn)
 			fdir = os.path.join(fdir, _start_time.strftime('%Y-%m-%d'))
 			if not os.path.exists(fdir):

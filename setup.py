@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
 		name = 'python-sweety',
-		version = '0.1.3',
+		version = '0.1.4',
 		description = 'Python common utility classes',
 		author = 'Chris Chou',
 		author_email = 'm2chrischou@gmail.com',
